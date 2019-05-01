@@ -9,11 +9,16 @@
                 <input type="text" id="eventName" required ng-model="event.name" placeholder="Name of your event...">
 
                 <label for="eventDate">Event Date:</label>
-                <input type="text" id="eventDate" required ng-pattern="/\d\d/\d\d/\d\d\d\d/" ng-model="event.date"
-                    placeholder="format (mm/dd/yy)...">
+                <input type="text" id="eventDate" date-keys required ng-pattern="/\d\d/\d\d/\d\d\d\d/"
+                    ng-model="event.date" placeholder="format (mm/dd/yy)...">
+
+                <div style="position:relative">
+                    <date-picker for="eventDate"></date-picker>
+                </div>
 
                 <label for="eventTime">Event Time:</label>
-                <input type="text" id="eventTime" ng-model="event.time" placeholder="Start and End time...">
+                <input type="text" id="eventTime" focus-element ng-model="event.time"
+                    placeholder="Start and End time...">
 
                 <label for="eventLocation">Event Location:</label>
                 <input type="text" id="eventLocation" ng-model="event.location.address"
@@ -32,8 +37,8 @@
                 <br />
                 <br />
 
-                <button type="submit" ng-disabled="newEventForm.$invalid" ng-click="saveEvent(event, newEventForm)"
-                    class="btn btn-primary">Submit</button>
+                <button type="submit" enter-key ng-disabled="newEventForm.$invalid"
+                    ng-click="saveEvent(event, newEventForm)" class="btn btn-primary">Submit</button>
                 <button type="button" ng-click="cancelEvent()" class="btn btn-default">Cancel</button>
             </fieldset>
         </form>
